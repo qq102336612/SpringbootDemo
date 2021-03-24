@@ -1,0 +1,50 @@
+server:
+  port: 8082
+    
+spring:
+  application:
+    name: SpringbootDemo
+  datasource: 
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: scott
+    password: scott
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-test-query: select 1 from DUAL
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      pool-name: HikariCP
+  thymeleaf:
+      # 末尾有/ 则return view时前缀无需加/
+      prefix: classpath:/templates/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      servlet:
+        content-type: text/html
+      #开发时关闭缓存,不然没法看到实时页面
+      cache: false
+  devtools:
+      restart:
+        enabled: true
+      
+mybatis:
+  type-aliases-package: com.yz.mapper
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+    # 控制台输出sql语句
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #解决返回map value为空字段不显示问题
+    call-setters-on-nulls: true
+
+ 
+  
+pagehelper: 
+   helperDialect: oracle
+   reasonable: true
+   supportMethodsArguments: true
+   params: count=countSql
