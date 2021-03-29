@@ -31,10 +31,10 @@ $(document).ready(function() {
           <p>Strive&nbsp;&nbsp;&nbsp;&nbsp;Everyday</p>
      </div>    
      <p class="p user_icon">
-       <input type="text" placeholder="账号" autocomplete="off" class="login_txtbx">
+       <input type="text" placeholder="账号" autocomplete="off" class="login_txtbx" id="user">
      </p> 
      <p class="p pwd_icon">
-       <input type="text" placeholder="密码" autocomplete="off" class="login_txtbx">
+       <input type="text" placeholder="密码" autocomplete="off" class="login_txtbx" id="password">
      </p>     	
      <div class="p val_icon">
         <div class="checkcode">
@@ -155,7 +155,30 @@ function animation() {
 }
 
 function validate(){
-	window.location.href='login';
+	var name=$("#user").val();
+	var password=$("#password").val();
+	var student={
+  			"name":name,
+  			"password":password
+  			}
+	/* alert($("#user").val()); */
+	 $.ajax({
+		 url:"login",
+         contentType: "application/json;charset=UTF-8",
+         type:"post",
+         async:false,
+         data:JSON.stringify(student),
+	    success:function(data){
+		 if(data=="1"){
+			 window.location.href="yz";
+		 }else{
+			 alert("您输入的账号和密码有误！");
+			 window.location.href="index.html";
+		 }
+		 
+	    }
+	    
+	}); 
 }
 animation();
 </script>

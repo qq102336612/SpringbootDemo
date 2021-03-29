@@ -36,10 +36,6 @@ public class testController {
 	public static Logger getLogger() {
 		return LOGGER;
 	}
-	@RequestMapping("/index")
-	public String index() {
-		return "";
-	}
 	@RequestMapping(value = "/studentList",method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> studentList(HttpServletRequest request) {
@@ -60,10 +56,10 @@ public class testController {
 		return "test";
 	}
 	
-	@RequestMapping("login")
+	/*@RequestMapping("login")
 	public String login(){
 		return "test";
-	}
+	}*/
 
 
 }

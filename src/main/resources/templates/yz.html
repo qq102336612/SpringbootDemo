@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-sdsds
+登陆成功
+<div th:text="${session.name}"></div> <!--获取session中的userName -->
+
 </body>
 </html>
