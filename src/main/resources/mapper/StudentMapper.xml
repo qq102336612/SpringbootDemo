@@ -11,5 +11,8 @@
 	<select id="queryStudentList" resultType="java.util.Map">
 		select id,name,password from student 
 	</select>
+	<select id="login" parameterType="com.yz.entity.Student" resultMap="StudentResultMap">
+		select * from student where name = #{name}
+	</select>
 
 </mapper>
