@@ -30,4 +30,17 @@ public class StudentServiceImpl implements StudentService {
 		return studentMapper.queryStudentList();
 	}
 
+
+	@Override
+	public Student queryuser(String phones) {
+		
+		return studentMapper.queryuser(phones);
+	}
+
+
+	@Override
+	public void adduser(String id,String name, String password) {
+		studentMapper.adduser(id,name, password);
+	}
+
 }

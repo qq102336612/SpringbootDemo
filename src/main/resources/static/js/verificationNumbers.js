@@ -14,7 +14,7 @@ function createCode(){
     for(var i=0;i<codeLength;i++) {
        var charIndex = Math.floor(Math.random()*60);
       code +=selectChar[charIndex];
-    }      
+    }
     if(code.length != codeLength){
       createCode();      
     }

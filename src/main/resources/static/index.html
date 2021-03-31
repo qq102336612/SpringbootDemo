@@ -34,11 +34,11 @@ $(document).ready(function() {
        <input type="text" placeholder="账号" autocomplete="off" class="login_txtbx" id="user">
      </p> 
      <p class="p pwd_icon">
-       <input type="text" placeholder="密码" autocomplete="off" class="login_txtbx" id="password">
+       <input type="password" placeholder="密码" autocomplete="off" class="login_txtbx" id="password">
      </p>     	
      <div class="p val_icon">
         <div class="checkcode">
-          <input type="text" id="J_codetext" placeholder="验证码" autocomplete="off" maxlength="4" class="login_txtbx">
+          <input type="text" id="J_codetext" placeholder="验证码" autocomplete="off" maxlength="4" class="login_txtbx" >
           <canvas class="J_codeimg" id="myCanvas" onclick="createCode()" onselectstart="return false">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
         </div>
         <a class="ver_btn" onclick="createCode();" onselectstart="return false">看不清，换一张</a>
@@ -154,12 +154,19 @@ function animation() {
   window.requestAnimationFrame(animation);
 }
 
+/* function getcode(){
+	alert(code);
+} */
+
 function validate(){
 	var name=$("#user").val();
 	var password=$("#password").val();
-	var student={
+	var input=$("#J_codetext").val()
+	var userlogin={
   			"name":name,
-  			"password":password
+  			"password":password,
+  			"code":code,
+  			"input":input
   			}
 	/* alert($("#user").val()); */
 	 $.ajax({
@@ -167,10 +174,13 @@ function validate(){
          contentType: "application/json;charset=UTF-8",
          type:"post",
          async:false,
-         data:JSON.stringify(student),
+         data:JSON.stringify(userlogin),
 	    success:function(data){
 		 if(data=="1"){
 			 window.location.href="yz";
+		 }else if(data=="2"){
+			 alert("您输入的验证码有误！");
+			 window.location.href="index.html";
 		 }else{
 			 alert("您输入的账号和密码有误！");
 			 window.location.href="index.html";

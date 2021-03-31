@@ -3,7 +3,7 @@
 <mapper namespace="com.yz.mapper.StudentMapper">
 	<resultMap id="StudentResultMap" type="com.yz.entity.Student">
 		<!-- WARNING - @mbg.generated -->
-		<id column="id" jdbcType="INTEGER" property="id" />
+		<id column="id" jdbcType="VARCHAR" property="id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="password" jdbcType="VARCHAR" property="password" />
 	</resultMap>
@@ -11,5 +11,13 @@
 	<select id="queryStudentList" resultType="java.util.Map">
 		select id,name,password from student 
 	</select>
+	
+	<select id="queryuser" resultType="com.yz.entity.Student" parameterType="java.lang.String">
+	    select id,name,password from student where name=#{phones}
+	</select>
+	
+	<insert id="adduser" parameterType="java.lang.String">
+	    insert into student(id,name,password)values(#{id},#{name},#{password}) 
+	</insert>
 
 </mapper>
