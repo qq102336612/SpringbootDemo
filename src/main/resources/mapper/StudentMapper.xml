@@ -19,5 +19,9 @@
 	<insert id="adduser" parameterType="java.lang.String">
 	    insert into student(id,name,password)values(#{id},#{name},#{password}) 
 	</insert>
+	
+	<select id="login" parameterType="com.yz.entity.Student" resultMap="StudentResultMap">
+		select * from student where name = #{name}
+	</select>
 
 </mapper>

@@ -11,5 +11,7 @@ public interface StudentService {
 	Student queryuser(String phone);
 	
 	void adduser(String id,String name,String password);
+	
+	Student login(Student stu);
 
 }

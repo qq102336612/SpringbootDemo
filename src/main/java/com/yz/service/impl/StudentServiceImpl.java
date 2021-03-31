@@ -42,5 +42,9 @@ public class StudentServiceImpl implements StudentService {
 	public void adduser(String id,String name, String password) {
 		studentMapper.adduser(id,name, password);
 	}
+	@Override
+	public Student login(Student stu) {
+		return studentMapper.login(stu);
+	}
 
 }

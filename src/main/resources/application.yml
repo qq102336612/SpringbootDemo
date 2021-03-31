@@ -6,8 +6,8 @@ spring:
     name: SpringbootDemo
   datasource: 
     url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-    username: scott
-    password: scott
+    username: system
+    password: Scott123
     driver-class-name: oracle.jdbc.OracleDriver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
